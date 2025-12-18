@@ -56,14 +56,30 @@ struct ContentView: View {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(viewModel.characters) { character in
                                 NavigationLink(
-                                    destination: CharacterDetailView(
-                                        character: character
-                                    )
+                                    destination: CharacterDetailView(character: character)
                                 ) {
                                     CharacterCardView(character: character)
                                 }
-                                .buttonStyle(PlainButtonStyle()
-                                )
+                                .buttonStyle(PlainButtonStyle())
+                                .onAppear {
+                                    // Trigger loading more when approaching the end
+                                    if viewModel.shouldLoadMore(currentItem: character) {
+                                        Task {
+                                            await viewModel.loadMoreCharacters()
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            // Loading indicator at the bottom
+                            if viewModel.isLoadingMore {
+                                HStack {
+                                    Spacer()
+                                    ProgressView()
+                                        .padding()
+                                    Spacer()
+                                }
+                                .gridCellColumns(2)
                             }
                         }
                         .padding()
