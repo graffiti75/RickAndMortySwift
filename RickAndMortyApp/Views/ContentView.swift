@@ -102,6 +102,9 @@ struct ContentView: View {
             }
         }
         .task {
+            // Set to true to test error case.
+            // Change to false to see normal behavior
+            viewModel.simulateError = false
             await viewModel.loadCharacters()
         }
     }

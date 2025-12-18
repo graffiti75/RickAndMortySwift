@@ -15,6 +15,9 @@ class CharacterViewModel: ObservableObject {
     @Published var isLoadingMore: Bool = false
     @Published var errorMessage: String?
     
+    // Add this for debugging
+    var simulateError: Bool = false  // Toggle this to test errors
+    
     private let networkService = NetworkService.shared
     private var currentPage: Int = 1
     private var totalPages: Int = 1
@@ -26,6 +29,13 @@ class CharacterViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         characters = []
+        
+        // Add this check
+        if simulateError {
+            errorMessage = "Simulated error for testing"
+            isLoading = false
+            return
+        }
         
         do {
             let response = try await networkService.fetchCharacters(page: currentPage)
