@@ -47,7 +47,7 @@ func sampleCharacter() -> Character {
         name: "Rick Sanchez",
         status: "Alive",
         species: "Human",
-        type: "",
+        type: "Genetic experiment",
         gender: "Male",
         origin: Location(name: "Earth (C-137)", url: ""),
         location: Location(name: "Citadel of Ricks", url: ""),

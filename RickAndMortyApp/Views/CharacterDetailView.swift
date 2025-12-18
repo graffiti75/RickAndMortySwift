@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CharacterDetailView: View {
     let character: Character
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ScrollView {
@@ -85,6 +86,21 @@ struct CharacterDetailView: View {
         }
         .background(Color(.systemGroupedBackground))
         .navigationBarTitleDisplayMode(.inline)
+        /*
+        .navigationBarBackButtonHidden(true)  // Hide default
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                        Text("Back")
+                    }
+                }
+            }
+        }
+         */
     }
     
     // Helper function to determine status color
@@ -142,4 +158,9 @@ struct InfoCard: View {
             character: sampleCharacter()
         )
     }
+}
+
+#Preview("InfoCard") {
+    let character = sampleCharacter()
+    InfoCard(title: "Gender", value: character.gender, icon: "person.fill")
 }
