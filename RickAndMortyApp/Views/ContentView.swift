@@ -5,12 +5,6 @@
 //  Created by graffiti75 on 17/12/25.
 //
 
-
-//
-//  ContentView.swift
-//  RickAndMortyApp
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -61,7 +55,15 @@ struct ContentView: View {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(viewModel.characters) { character in
-                                CharacterCardView(character: character)
+                                NavigationLink(
+                                    destination: CharacterDetailView(
+                                        character: character
+                                    )
+                                ) {
+                                    CharacterCardView(character: character)
+                                }
+                                .buttonStyle(PlainButtonStyle()
+                                )
                             }
                         }
                         .padding()

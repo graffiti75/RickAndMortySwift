@@ -45,7 +45,7 @@ struct CharacterCardView: View {
         .padding(8)
         .background(Color(.systemBackground))
         .cornerRadius(16)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
     }
 }
 
