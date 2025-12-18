@@ -139,20 +139,7 @@ struct InfoCard: View {
 #Preview {
     NavigationView {
         CharacterDetailView(
-            character: Character(
-                id: 1,
-                name: "Rick Sanchez",
-                status: "Alive",
-                species: "Human",
-                type: "",
-                gender: "Male",
-                origin: Location(name: "Earth (C-137)", url: ""),
-                location: Location(name: "Citadel of Ricks", url: ""),
-                image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-                episode: Array(repeating: "", count: 51),
-                url: "",
-                created: ""
-            )
+            character: sampleCharacter()
         )
     }
 }
